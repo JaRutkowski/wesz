@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "Activities" %}{% endblock %}
+
+{% block content %}
+{% trans "Room" as messages_room %}
+{% trans "Group" as messages_group %}
+{% trans "Date" as messages_date %}
+{% trans "List of rooms" as messages_list_of_rooms %}
+{% trans "No rooms available" as messages_no_rooms_available %}
+{% trans "My reservations" as messages_my_reservations %}
+{% trans "No reservations available" as messages_no_res_available %}
+
+<link rel="stylesheet" href="{% static 'Datetimepicker/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Timetable-lib/timetablejs.css' %}">
+
+
+
+<div class="container">
+    <div class="col-sm-12">
+        <!-- Current Rooms -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ messages_list_of_rooms }}
+            </div>
+
+            <div class="panel-body">
+                {% if room_list %}
+                <table class="table table-striped room-table">
+                    <tbody>
+                        <tr>
+                            <td id="timetable-date">
+
+                                <div class="container" style="width:90%;">
+                                    <div class="row">
+                                        <p class='text-center'>
+                                            <div class="form-group">
+                                                <div class='input-group date' id='reservationdate'>
+                                                    <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="timetable"></div>
+                {% else %}
+                <div class="row">
+                    <p class='text-center'>
+                        {{ messages_no_room_available }}
+                    </p>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <!-- Group Reservations -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ messages_my_reservations }}
+            </div>
+
+        {% if group_reservation_list %}
+            <div class="panel-body">
+                <table class="table table-striped reservation-table">
+                    <thead>
+                    <th>{{ messages_room }}</th>
+                    <th>{{ messages_group }}</th>
+                    <th>{{ messages_date }}</th>
+                    </thead>
+                    <tbody>
+                        {% for reservation in group_reservation_list %}
+                            <tr>
+                                <td class="table-text"><div>{{ reservation.room }} </div></td>
+                                <td class="table-text"><div>{{ reservation.group }} </div></td>
+                                <td class="table-text"><div>
+                                        <i class="fa fa-btn fa-calendar-plus-o"></i>{{ reservation.begin_date }}<br />
+                                        <i class="fa fa-btn fa-calendar-times-o"></i>{{ reservation.end_date }}
+                                    </div></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="row">
+                <p class='text-center'>
+                    {{ messages_no_res_available }}
+                </p>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'Datetimepicker/jquery/dist/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'Datetimepicker/moment/min/moment-with-locales.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Datetimepicker/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Timetable-lib/timetable.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Timetable-lib/timetable.script.js' %}"></script>
+
+<script>
+    window.reservations = [];
+    {% if group_reservation_list %}
+        {% for reservation in group_reservation_list %}
+            var room = "{{ reservation.room }}";
+            var group = "{{ reservation.group }}";
+            var beginDate = new Date("{{ reservation.begin_date.isoformat }}".replace(" ", "T"));
+            var endDate = new Date("{{ reservation.end_date.isoformat }}".replace(" ", "T"));
+            window.reservations.push({room, group, beginDate, endDate});
+        {% endfor %}
+    {% endif %}
+
+    window.timetable = new Timetable();
+    window.timetable.setScope(8,20);
+    var locations = [];
+
+    {% if room_list %}
+        {% for room in room_list %}
+            locations.push("{{ room }}");
+        {% endfor %}
+        window.timetable.addLocations(locations);
+    {% endif %}
+
+    createTimetable(new Date());
+
+    $(function () {
+        $('#reservationdate').datetimepicker({
+            locale: 'pl',
+            format: 'YYYY-MM-DD',
+            daysOfWeekDisabled: [0]
+        });
+
+        $('#reservationdate').on("dp.change", function(e){
+            createTimetable(new Date(e.date));
+        });
+    });
+ </script>
+{% endblock %}

@@ -1,0 +1,23 @@
+[
+{
+  "model": "reservations.status",
+  "pk": 1,
+  "fields": {
+    "name": "Waiting"
+  }
+},
+{
+  "model": "reservations.status",
+  "pk": 2,
+  "fields": {
+    "name": "Accepted"
+  }
+},
+{
+  "model": "reservations.status",
+  "pk": 3,
+  "fields": {
+    "name": "Rejected"
+  }
+}
+]

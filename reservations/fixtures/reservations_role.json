@@ -1,0 +1,30 @@
+[
+{
+  "model": "reservations.role",
+  "pk": 1,
+  "fields": {
+    "name": "Administrator"
+  }
+},
+{
+  "model": "reservations.role",
+  "pk": 2,
+  "fields": {
+    "name": "Professor"
+  }
+},
+{
+  "model": "reservations.role",
+  "pk": 3,
+  "fields": {
+    "name": "Student"
+  }
+},
+{
+  "model": "reservations.role",
+  "pk": 4,
+  "fields": {
+    "name": "Bot"
+  }
+}
+]

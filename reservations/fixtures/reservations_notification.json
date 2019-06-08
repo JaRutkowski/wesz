@@ -1,0 +1,82 @@
+[
+{
+  "model": "reservations.notification",
+  "pk": 1,
+  "fields": {
+    "sender": 4,
+    "recipient": 2,
+    "status": 1,
+    "read_on": "2016-12-14T06:00:00Z"
+  }
+},
+{
+  "model": "reservations.notification",
+  "pk": 2,
+  "fields": {
+    "sender": 4,
+    "recipient": 3,
+    "status": 1,
+    "read_on": "2016-12-14T06:00:00Z"
+  }
+},
+{
+  "model": "reservations.notification",
+  "pk": 3,
+  "fields": {
+    "sender": 6,
+    "recipient": 2,
+    "status": 1,
+    "read_on": "2016-12-14T06:00:00Z"
+  }
+},
+{
+  "model": "reservations.notification",
+  "pk": 4,
+  "fields": {
+    "sender": 6,
+    "recipient": 3,
+    "status": 1,
+    "read_on": "2016-12-14T06:00:00Z"
+  }
+},
+{
+  "model": "reservations.notification",
+  "pk": 5,
+  "fields": {
+    "sender": 9,
+    "recipient": 2,
+    "status": 1,
+    "read_on": "2016-12-14T06:00:00Z"
+  }
+},
+{
+  "model": "reservations.notification",
+  "pk": 6,
+  "fields": {
+    "sender": 9,
+    "recipient": 3,
+    "status": 1,
+    "read_on": "2016-12-14T06:00:00Z"
+  }
+},
+{
+  "model": "reservations.notification",
+  "pk": 7,
+  "fields": {
+    "sender": 2,
+    "recipient": 6,
+    "status": 2,
+    "read_on": null
+  }
+},
+{
+  "model": "reservations.notification",
+  "pk": 8,
+  "fields": {
+    "sender": 3,
+    "recipient": 9,
+    "status": 3,
+    "read_on": null
+  }
+}
+]

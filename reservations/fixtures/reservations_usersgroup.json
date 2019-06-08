@@ -1,0 +1,26 @@
+[
+{
+  "model": "reservations.usersgroup",
+  "pk": 1,
+  "fields": {
+    "group": 1,
+    "leader": null
+  }
+},
+{
+  "model": "reservations.usersgroup",
+  "pk": 2,
+  "fields": {
+    "group": 2,
+    "leader": 6
+  }
+},
+{
+  "model": "reservations.usersgroup",
+  "pk": 3,
+  "fields": {
+    "group": 3,
+    "leader": 9
+  }
+}
+]

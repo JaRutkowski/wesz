@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Welcome" %}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="col-sm-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Wydziałowy Elektroniczny System Zarządzania
+				</div>
+
+				<div class="panel-body">
+					<div class="hidden-xs" style="float: right;"><img src="{% static 'wesz.jpg' %}" /></div>
+
+					Witamy w aplikacji ułatwiającej komunikację na uczelni! :-)<br /><br />
+
+					Dostępne są już następujące moduły:
+					<ul>
+						<li>sprawdzanie dostępności sal Wydziału Informatyki i Nauk o Materiałach,</li>
+						<li>informowanie o egzaminach grup, do których przynależy student,</li>
+						<li>rezerwowanie sal na terenie Wydziału Informatyki i Nauk o Materiałach,</li>
+						<li>powiadomienia o czynnościach związanych z rezerwacjami sal.</li>
+					</ul>
+
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Publiczne Testy Aplikacji W.E.S.Z.
+				</div>
+
+				<div class="panel-body">
+					Konta do testów:
+					<ul>
+						<li>admin1</li>
+						<li>admin2</li>
+						<li>prof1</li>
+						<li>prof2</li>
+						<li>starosta1</li>
+						<li>informatyk2</li>
+						<li>informatyk3</li>
+                        <li>starosta2</li>
+						<li>matematyk2</li>
+						<li>matematyk3</li>
+					</ul>
+
+					Hasła do kont: <em>asdfasdf</em>
+
+					<br /><br />
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

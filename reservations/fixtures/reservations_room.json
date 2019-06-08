@@ -1,0 +1,30 @@
+[
+{
+  "model": "reservations.room",
+  "pk": 1,
+  "fields": {
+    "name": "401"
+  }
+},
+{
+  "model": "reservations.room",
+  "pk": 2,
+  "fields": {
+    "name": "402"
+  }
+},
+{
+  "model": "reservations.room",
+  "pk": 3,
+  "fields": {
+    "name": "408"
+  }
+},
+{
+  "model": "reservations.room",
+  "pk": 4,
+  "fields": {
+    "name": "507"
+  }
+}
+]

@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "Notifications" %}{% endblock %}
+
+{% block content %}
+{% trans "Notifications" as messages_notification %}
+{% trans "Unread" as messages_unread %}
+{% trans "Sender" as messages_sender %}
+{% trans "Status" as messages_status %}
+{% trans "No notifications are available" as messages_no_not_available %}
+{% trans "Mark all as read" as messages_mark_all_as_read_action %}
+<div class="container">
+    <div class="col-sm-12">
+        <!-- Notifications -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ messages_notifications }}
+            </div>
+        {% if notification_list %}
+            <div class="panel-body">
+                <form action="{% url 'notifications:mark_all_as_read' %}" method="GET">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-btn fa-check-square"></i>{{ messages_mark_all_as_read_action }}
+                    </button>
+                </form>
+
+                <table class="table table-striped reservation-table">
+                    <thead>
+                    <th>{{ messages_unread }}</th>
+                    <th>{{ messages_sender }}</th>
+                    <th>{{ messages_status }}</th>
+                    </thead>
+                    <tbody>
+                        {% for notification in notification_list %}
+                            <tr>
+                                {% if notification.is_unread %}
+                                    <td class="table-text">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                    </td>
+                                {% else %}
+                                    <td class="table-text" ></td>
+                                {% endif %}
+                                <td class="table-text"><div>{{ notification.sender }} </div></td>
+                                <td class="table-text"><div>{{ notification.status }} </div></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="row">
+                <p class='text-center'>
+                    {{ messages_no_not_available }}
+                </p>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

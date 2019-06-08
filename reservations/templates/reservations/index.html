@@ -1,0 +1,233 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Reservations" %}{% endblock %}
+
+{% block content %}
+
+{% trans "Room" as messages_room %}
+{% trans "Group" as messages_group %}
+{% trans "Date" as messages_date %}
+{% trans "Requester" as messages_requester %}
+{% trans "Status" as messages_status %}
+{% trans "Decider" as messages_decider %}
+{% trans "List of rooms" as messages_list_of_rooms %}
+{% trans "My reservations" as messages_my_reservations %}
+{% trans "All reservations" as messages_all_reservations %}
+{% trans "All requests" as messages_all_requests %}
+{% trans "No rooms available" as messages_no_rooms_available %}
+{% trans "No reservations available" as messages_no_res_available %}
+{% trans "No requests available" as messages_no_req_available %}
+{% trans "New reservation" as messages_new_reservation %}
+{% trans "Accept" as messages_accept_action %}
+{% trans "Reject" as messages_reject_action %}
+
+<link rel="stylesheet" href="{% static 'Datetimepicker/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Timetable-lib/timetablejs.css' %}">
+
+<div class="container">
+    <div class="col-sm-12">
+        <!-- Current Rooms -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ messages_list_of_rooms }}
+            </div>
+
+            <div class="panel-body">
+                {% if room_list %}
+                    <table class="table table-striped room-table">
+                        <tbody>
+                            <tr>
+                                <td id="timetable-date">
+
+                                    <div class="container" style="width:90%;">
+                                        <div class="row">
+                                            <p class='text-center'>
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='reservationdate'>
+                                                        <input type='text' class="form-control" />
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="timetable"></div>
+                {% else %}
+                <div class="row">
+                    <p class='text-center'>
+                        {{ messages_no_room_available }}
+                    </p>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <!-- My Reservations -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ messages_my_reservations }}
+            </div>
+
+         <div class="panel-body">
+            <form action="{% url 'reservations:create' %}" method="GET">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-btn fa-plus"></i>{{ messages_new_reservation }}
+                    </button>
+            </form>
+         </div>
+
+        {% if my_reservation_list %}
+            <div class="panel-body">
+                <table class="table table-striped reservation-table">
+                    <thead>
+                    <th>{{ messages_date }}</th>
+                    <th>{{ messages_room }}</th>
+                    <th>{{ messages_group }}</th>
+                    <th>{{ messages_status }}</th>
+                    <th>{{ messages_decider }}</th>
+                    </thead>
+                    <tbody>
+                        {% for reservation in my_reservation_list %}
+                            <tr>
+                                <td class="table-text"><div>
+                                        <i class="fa fa-btn fa-calendar-plus-o"></i>{{ reservation.begin_date }}<br />
+                                        <i class="fa fa-btn fa-calendar-times-o"></i>{{ reservation.end_date }}
+                                    </div></td>
+                                <td class="table-text"><div>{{ reservation.room }} </div></td>
+                                <td class="table-text"><div>{{ reservation.group }} </div></td>
+                                <td class="table-text"><div>{{ reservation.status }} </div></td>
+                                {% if reservation.decider != None %}
+                                    <td class="table-text"><div>{{ reservation.decider }} </div></td>
+                                {% else %}
+                                    <td class="table-text"></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="row">
+                <p class='text-center'>
+                    {{ messages_no_res_available }}
+                </p>
+            </div>
+        {% endif %}
+        </div>
+
+    {% if all_request_list %}
+        <!-- All Requests -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ messages_all_requests }}
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-striped reservation-table">
+                    <thead>
+                        <th>{{ messages_date }}</th>
+                        <th>{{ messages_room }}</th>
+                        <th>{{ messages_group }}</th>
+                        <th>{{ messages_requester }}</th>
+                        <th>{{ messages_status }}</th>
+                        <th>{{ messages_decider }}</th>
+                    </thead>
+                    <tbody>
+                        {% for reservation in all_request_list %}
+                            <tr>
+                                <td class="table-text"><div>
+                                        <i class="fa fa-btn fa-calendar-plus-o"></i>{{ reservation.begin_date }}<br />
+                                        <i class="fa fa-btn fa-calendar-times-o"></i>{{ reservation.end_date }}
+                                    </div></td>
+                                <td class="table-text"><div>{{ reservation.room }} </div></td>
+                                <td class="table-text"><div>{{ reservation.group }} </div></td>
+                                <td class="table-text"><div>{{ reservation.requester }} </div></td>
+                                <td class="table-text"><div>{{ reservation.status }} </div></td>
+                                {% if reservation.decider != None %}
+                                    <td class="table-text"><div>{{ reservation.decider }} </div></td>
+                                {% else %}
+                                    <td class="table-text"></td>
+                                {% endif %}
+                                <!-- Reservation Buttons -->
+                                <td>
+                                    <form action="{% url 'reservations:accept' reservation.id %}" method="GET">
+                                        <button type="submit"  class="btn btn-success">
+                                            <i class="fa fa-btn fa-check-square"></i>{{ messages_accept_action }}
+                                        </button>
+                                    </form>
+
+                                    <form action="{% url 'reservations:reject' reservation.id %}" method="GET">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-ban"></i>{{ messages_reject_action }}
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'Datetimepicker/jquery/dist/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'Datetimepicker/moment/min/moment-with-locales.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Datetimepicker/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Timetable-lib/timetable.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Timetable-lib/timetable.script.js' %}"></script>
+
+<script>
+    window.reservations = [];
+    {% if all_reservation_list %}
+        {% for reservation in all_reservation_list %}
+            var room = "{{ reservation.room }}";
+            var group = "{{ reservation.group }}";
+            var beginDate = new Date("{{ reservation.begin_date.isoformat }}".replace(" ", "T"));
+            var endDate = new Date("{{ reservation.end_date.isoformat }}".replace(" ", "T"));
+            window.reservations.push({room, group, beginDate, endDate});
+        {% endfor %}
+    {% endif %}
+
+    window.timetable = new Timetable();
+    window.timetable.setScope(8,20);
+    var locations = [];
+
+    {% if room_list %}
+        {% for room in room_list %}
+            locations.push("{{ room }}");
+        {% endfor %}
+        window.timetable.addLocations(locations);
+
+    createTimetable(new Date());
+
+    $(function () {
+        $('#reservationdate').datetimepicker({
+            locale: 'pl',
+            format: 'YYYY-MM-DD',
+            daysOfWeekDisabled: [0]
+        });
+
+        $('#reservationdate').on("dp.change", function(e){
+            createTimetable(new Date(e.date));
+        });
+    });
+    {% endif %}
+
+</script>
+{% endblock %}

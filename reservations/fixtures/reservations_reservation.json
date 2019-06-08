@@ -1,0 +1,41 @@
+[
+{
+  "model": "reservations.reservation",
+  "pk": 1,
+  "fields": {
+    "room": 1,
+    "group": 1,
+    "begin_date": "2016-12-14T08:30:00Z",
+    "end_date": "2016-12-14T10:00:00Z",
+    "status": 1,
+    "requester": 4,
+    "decider": null
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 2,
+  "fields": {
+    "room": 1,
+    "group": 2,
+    "begin_date": "2016-12-14T10:15:00Z",
+    "end_date": "2016-12-14T11:45:00Z",
+    "status": 2,
+    "requester": 6,
+    "decider": 2
+  }
+},
+{
+  "model": "reservations.reservation",
+  "pk": 3,
+  "fields": {
+    "room": 1,
+    "group": 3,
+    "begin_date": "2016-12-14T12:00:00Z",
+    "end_date": "2016-12-14T13:30:00Z",
+    "status": 3,
+    "requester": 9,
+    "decider": 3
+  }
+}
+]

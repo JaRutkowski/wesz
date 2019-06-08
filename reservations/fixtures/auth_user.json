@@ -1,0 +1,230 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$rvZzUyNJ2WwK$MBw9Gg/A66mEqYVArTBBpsxeazTGW7xc31S5zp9cp+8=",
+    "last_login": "2016-12-13T19:29:40.906Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Root",
+    "last_name": "Admin",
+    "email": "admin@wesz.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2016-12-08T14:14:20Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$wYFt2HnjBfaY$/8vfavdWFHL6tUIE4tXF5V3O7oc3k1iYqNrT0uUEBrk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "bot",
+    "first_name": "Wydzia\u0142owy",
+    "last_name": "Bot",
+    "email": "bot@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:48:43Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$xm1hVIpFCJvH$9JmYfxSvgMrvb/s2F8u8gYvPjnD2X3cWDb1l5ujfvfY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "admin1",
+    "first_name": "Pierwszy",
+    "last_name": "Admin",
+    "email": "admin1@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:55:35Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$ffGskJabc6Kt$UrMP3+pqRlkJQ5SOBem97cC8kVQUCgPnsGOf3L9Qp88=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "admin2",
+    "first_name": "Drugi",
+    "last_name": "Admin",
+    "email": "admin2@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:56:00Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$O4MeitAIy5Xt$wz5ruRwJZYWMisGzlgzCSaWGvVZGLF6C9JwThcOnc7Y=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "prof1",
+    "first_name": "Pierwszy",
+    "last_name": "Profesor",
+    "email": "prof1@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:56:28Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$ZWhdmMNCsTGh$icWdu5DxAifEhmM8TIYKRTyvg8Sbw1T8XLnK8R3dkFw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "prof2",
+    "first_name": "Drugi",
+    "last_name": "Profesor",
+    "email": "prof2@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:56:54Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$TizwxCsfNUrN$JlfjRJuHxkeUBCjD42cGX6F2nrl+dBqw+A2Dngtm6sY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "starosta1",
+    "first_name": "Pierwszy",
+    "last_name": "Informatyk-Starosta",
+    "email": "starosta1@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:57:21Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$2hwFVKi0RiRo$Ybp1Vl6yqP50zSV8jZ+chFX568sBLWxc7I0Lj2faEes=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "informatyk2",
+    "first_name": "Drugi",
+    "last_name": "Informatyk-Student",
+    "email": "informatyk2@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:58:47Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$MED0kfafLuk2$/xZ7VNCzuESUhIdRX4w/ptVP3TR8zkoPeovPcR8HWmk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "informatyk3",
+    "first_name": "Trzeci",
+    "last_name": "Informatyk-Student",
+    "email": "informatyk3@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:59:17Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$lbjThlMrUrqq$c9Q/FZuLU8sRLSLdC/X6/W11MSHIVcQKpFyoXEuSKyY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "starosta2",
+    "first_name": "Pierwszy",
+    "last_name": "Matematyk-Starosta",
+    "email": "starosta2@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T17:59:49Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$h2U8ktmfwpbK$OjpuVjEZWo01RMX4dYSIXRUyWxR2gHEgk3fUBwBHpXs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "matematyk2",
+    "first_name": "Drugi",
+    "last_name": "Matematyk-Student",
+    "email": "matematyk2@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T18:00:16Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$0uG34MTScwim$oNKdHFiSBMHaxshjqE6Zj7f2+eILZDlNbGkpLMJKOC0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "matematyk3",
+    "first_name": "Trzeci",
+    "last_name": "Matematyk-Student",
+    "email": "matematyk3@wesz.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2016-12-13T18:00:50Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+}
+]

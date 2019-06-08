@@ -1,0 +1,91 @@
+{% load static %}
+
+{% load i18n %}
+{% trans "Rooms" as messages_rooms %}
+{% trans "Activities" as messages_activities %}
+{% trans "Notifications" as messages_notifications %}
+{% trans "Reservations" as messages_reservations %}
+{% trans "Login" as messages_login_action %}
+{% trans "Logout" as messages_logout_action %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{% block title %}{% endblock %} - Wydziałowy Elektroniczny System Zarządzania</title>
+	<link rel="shortcut icon" href="{% static 'favicon.png' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'no-more-tables.css' %}" />
+
+	<link href='https://fonts.googleapis.com/css?family=Andada&subset=latin-ext' rel='stylesheet' type='text/css'>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<style>
+		body {
+			font-family: 'Andada';
+			margin-top: 25px;
+		}
+
+		.fa-btn {
+			margin-right: 6px;
+		}
+
+		.table-text div {
+			padding-top: 6px;
+		}
+	</style>
+
+	<script>
+		(function () {
+			$('#task-name').focus();
+		}());
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+					<a class="navbar-brand" href="/">W.E.S.Z.</a>
+				</div>
+
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/rooms"><i class="fa fa-btn fa-table"></i>{{ messages_rooms }}</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="/activities"><i class="fa fa-btn fa-bookmark"></i>{{ messages_activities }}</a></li>
+                <li><a href="/reservations"><i class="fa fa-btn fa-flag"></i>{{ messages_reservations }}</a></li>
+            {% endif %}
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+            {% if not user.is_authenticated %}
+                <li><a href="/login"><i class="fa fa-btn fa-sign-in"></i>{{ messages_login_action }}</a></li>
+            {% else %}
+                <li><a href="/notifications"><i class="fa fa-btn fa-globe"></i>{{ unread_counter }} {{ messages_notifications }}</a></li>
+                <li><a><i class="fa fa-btn fa-user"></i>{% blocktrans with fname=user.first_name lname=user.last_name %}Welcome, {{ fname }} {{ lname }}! {% endblocktrans %}</a></li>
+                <li><a href="/logout"><i class="fa fa-btn fa-sign-out"></i>{{ messages_logout_action }}</a></li>
+            {% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

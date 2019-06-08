@@ -1,0 +1,98 @@
+[
+{
+  "model": "reservations.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "role": 4
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "role": 1
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 3,
+  "fields": {
+    "user": 4,
+    "role": 1
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 4,
+  "fields": {
+    "user": 5,
+    "role": 2
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 5,
+  "fields": {
+    "user": 6,
+    "role": 2
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 6,
+  "fields": {
+    "user": 7,
+    "role": 3
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 7,
+  "fields": {
+    "user": 8,
+    "role": 3
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 8,
+  "fields": {
+    "user": 9,
+    "role": 3
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 9,
+  "fields": {
+    "user": 10,
+    "role": 3
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 10,
+  "fields": {
+    "user": 11,
+    "role": 3
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 11,
+  "fields": {
+    "user": 12,
+    "role": 3
+  }
+},
+{
+  "model": "reservations.userprofile",
+  "pk": 12,
+  "fields": {
+    "user": 1,
+    "role": 4
+  }
+}
+]
